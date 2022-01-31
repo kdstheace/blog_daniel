@@ -8,9 +8,13 @@ import lombok.RequiredArgsConstructor;
 
 import com.danielsoo.blog_daniel.domain.posts.Posts;
 import com.danielsoo.blog_daniel.domain.posts.PostsRepository;
+import com.danielsoo.blog_daniel.web.dto.PostsListResponseDto;
 import com.danielsoo.blog_daniel.web.dto.PostsResponseDto;
 import com.danielsoo.blog_daniel.web.dto.PostsSaveRequestDto;
 import com.danielsoo.blog_daniel.web.dto.PostsUpdateRequestDto;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -36,6 +40,11 @@ public class PostsService {
         Posts post = postsRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 게시글 없음 id="+ id));
         PostsResponseDto postsResponseDto = new PostsResponseDto(post);
         return postsResponseDto;
+    }
+
+    @Transactional(readOnly = true)
+    public List<PostsListResponseDto> findAllDesc(){
+        return postsRepository.findAllDesc().stream().map(PostsListResponseDto::new).collect(Collectors.toList());
     }
 
 }
