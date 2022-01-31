@@ -4,13 +4,15 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import com.danielsoo.blog_daniel.domain.BaseTimeEntity;
+
 import javax.persistence.*;
 
 
 @NoArgsConstructor
 @Getter
 @Entity
-public class Posts {
+public class Posts extends BaseTimeEntity {
     @Id @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
