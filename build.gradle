@@ -31,7 +31,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'com.h2database:h2'
     implementation 'org.springframework.boot:spring-boot-starter-mustache'
-
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client' // 소셜로그인 등 클라이언트 입장에서 소셜기능구현시 필요
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 
