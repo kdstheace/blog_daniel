@@ -4,4 +4,6 @@
 .idea
 application-oauth.properties
 *.class
+/build/
 build
+build/
