@@ -21,4 +21,10 @@ public class JavaDocStudy {
             throw e;
         }
     }
+
+    /**
+     * Tool > Generate JavaDoc
+     * add setting for Korean language compatibility
+     * -encoding UTF-8 -charset UTF-8 -docencoding UTF-8
+     */
 }
