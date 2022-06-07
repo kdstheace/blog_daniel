@@ -1,0 +1,25 @@
+1. What is RESTAPI?
+  REpresentational: formats (xml, JSON, yaml, html)
+  State: data
+  Transfer: transferring data btw client-server using HTTP protocol
+
+2. Why?
+  Increases in using various devices such as mobile, REST API lets the web&mobile clients consume the API
+  without developing separate applications
+
+3. REST Architectural Constraints (REST Guidlines for RESTful API)
+  1) Client-Server Architecture: The client & Server are independent to each other
+  2) Stateless: The server does not store any data during the processing of the request server
+                (only client-side will save the state of the session)
+  3) Cacheable: The client should have ability to store responses in a cache
+  4) Uniform Interface: a generic interface manages all the interactions btw the client & server in a unified way.
+                        , which simplifies and decouples the architecture
+  5) Layered System: The server can have multiple layers for implementation.
+                     It helps to improve scalability by enabling a load balancing
+  6) Code on Demand: (Optional) the functionality of the client application can be extended at runtime
+                     by allowing a code download from the server, executing the code.
+
+4. Key Concepts
+  1) Resource: anything you want to show to the world thru your application.
+     * blog application's rsc - Post, Comment, User, Tags
+  2) 

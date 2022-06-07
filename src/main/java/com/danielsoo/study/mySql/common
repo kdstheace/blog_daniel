@@ -1,0 +1,5 @@
+1. Command Prompt
+  1) Locate the bin folder -> C:\Program Files\MySQL\MySQL Server 8.0\bin
+  2) Change directory -> cd C:\Program Files\MySQL\MySQL Server 8.0\bin
+  3) execute mysql with root acc -> mysql -u root -p
+  4) input pw -> root
