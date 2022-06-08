@@ -37,3 +37,5 @@
   GET         /api/posts        200(OK)         Get all posts
   GET         /api/posts/{id}   200(OK)         Get post by id
   POST        /api/posts        201(Created)    Create a new Post
+  DELETE      /api/posts/{id}   200(OK)         Delete post by id
+  PUT         /api/posts/{id}   200(OK)         Update existing post with id
