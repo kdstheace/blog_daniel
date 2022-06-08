@@ -15,7 +15,12 @@ public class AnnotationStudy {
         2) 메소드별
             - @RequestMapping: (method=RequestMethod.GET) 등을 붙여서 HTTP METHOD를 받게한 옛날 방식
             - @GetMapping: HTTP Method의 Get 요청을 받을 수 있는 API를 만듦,
-    3.
+    3. Test
+        1) Class상단
+            - @RunWith(SpringRunner.class) : 테스트 진행할 때 SpringRunner라는 스프링 실행자를 사용하여, 스프링부트테스트와 JUnit사이의 연결자 역할을 한다.
+            - @WebMvcTest(Controllers = Ctrler.class)
+                    : 여러 테스트어노테이션 중, Web에 집중할 수 있는 어노테이션, 선언할 경우 , @Controller, @ControllerAdvice 등 사용 가능
+                      단, @Service, @Component, @Repository는 사용 불가
     */
 
     /**
