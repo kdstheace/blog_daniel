@@ -22,4 +22,18 @@
 4. Key Concepts
   1) Resource: anything you want to show to the world thru your application.
      * blog application's rsc - Post, Comment, User, Tags
-  2) 
+  2)
+
+6. Application Architecture
+  1) Postman Client
+    DTO, JSON
+  2) Controller - API Layer
+  3) Service - Business Logic
+  4) DAO(Repository) - Persistence Logic
+  5) DB
+
+7. Design Examples for POST resources
+  <HTTP Method> <URL Path>    <StatusCode>    <Description>
+  GET         /api/posts        200(OK)         Get all posts
+  GET         /api/posts/{id}   200(OK)         Get post by id
+  POST        /api/posts        201(Created)    Create a new Post

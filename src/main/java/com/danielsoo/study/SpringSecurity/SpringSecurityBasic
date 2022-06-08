@@ -1,0 +1,49 @@
+
+@5BasicConcepts
+  1. Authentication
+    - Define who you are
+    1) Knowledge based authentication: pw, pinCode, SecretQuestions
+    2) Possession based authentication: TxtMsg, KeyCards, Badges, TokenDevice
+    3) MultiFactor Authentication: Knowledge + Possession
+  2. Authorization
+    - Are you allowed to do this? YN
+  3. Principal
+    - Currently loggedIn user
+    - 1 request can have only 1 principal
+  4. Granted Authority
+  5. Roles
+    - Group of Authorities
+
+@AddSpringSecurityToSpringBootProject
+  1. spring-boot-starter-security
+  : dependency that make springSecurity available
+  2. add dependency classpath below in a pom.xml(Mvn project)
+     <dependency>
+     <groupId>org.springframework.boot</groupId>
+     <artifactId>spring-boot-starter-security</artifactId>
+     </dependency>
+  3. SS automatically adds sign-in function.
+  4.HowDoesItWork?
+    1. As one of 'filters' for every request, it intercepts every requests.
+    2. SS's default behavior
+      1) Adds mandatory authentication for all URLs (skip some of urls eg.error page)
+      2) Adds login form
+      3) Handles login error
+      4) Creates a user and sets a default password
+        *You can override the default user at <application.properties> with setting as below.
+        spring.security.user.name=customizedName
+        spring.security.user.password=hello
+
+@HowToConfigureAuthenticationInSS
+  1. AuthenticationManager : doing authenticate()
+  2. AuthenticationManagerBuilder : build up AM
+        AMB: What type of Auth?
+        user: In-Memory Auth, please!
+        AMB: Tell me the userName, PW, and Role
+  3. Steps
+    1) Get hold of AuthenticationManagerBuilder
+      - SpringSecurityApp has a Class 'WebSecurityConfigurerAdapter', which has a configure(AuthenticationManagerBuilder auth)
+      - You have to extend that class and override configure(AuthMgrBldr),
+        without it, SSApp will call the default configure.
+    2) Set the configuration on it
+
