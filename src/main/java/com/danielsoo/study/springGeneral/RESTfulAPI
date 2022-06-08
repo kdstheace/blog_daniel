@@ -20,8 +20,51 @@
                      by allowing a code download from the server, executing the code.
 
 4. Key Concepts
-  1) Resource: anything you want to show to the world thru your application.
+  1) Resource
+    : anything you want to show to the world thru your application.
      * blog application's rsc - Post, Comment, User, Tags
+  2) URI(Uniform Resource Identifier)
+    : identify resources by using HTTP protocols
+     * eg. PUT-http://localhost:8080/api/posts/2 : Updates a POST rsc whose ID is 2
+  3) Sub-resource
+    : the relationships are often modelled by a sub-resource
+     * Syntax: GET /resources/{resource-id}/sub-resource/{sub-resource-id}
+  4) HTTP Methods
+    - GET: to get a collection or a single rsc
+    - POST: to create a new rsc
+    - PUT: to update an existing rsc
+    - DELETE: to delete a collection or a single rsc
+    - PATCH: to update rsc partially
+
+5. HTTP Status Codes
+  1) 200 OK: indicates the request is successful, and the response content is returned to the client as appropriate
+  2) 201 Created: indicates that the request is successful and a new resource is created
+  3) 400 BadRequest: indicates that the server failed to process the request because of the syntax error. The client needs to correct request.
+  4) 401 Unauthorized: indicates that authentication is required for the rsc. try again with a proper authentication.
+  5) 403 Forbidden: indicates that the server is refusing to respond to the request even if the request is valid.
+                    eg. protected contents for unauthorized request
+                    the reason will be listed in the body as long as the request is not a HEAD method
+  6) 404 NotFound: indicates that the requested rsc is not found at the location specified in the request
+  7) 500 InternalServerError: indicates a generic error message. Unexpected error occurred in a server side
+
+
+6. Best Practices for Designing REST API
+  1) use noun for rsc identification
+  2) use plural nouns to name a rsc
+  3) use sub-rsc for relations
+
+
+** Mock blog Technology stack
+ - Java Platform: Java 8+
+ - Frameworks: Spring Boot, Spring Security(JWT), Spring Data JPA(Hibernate)
+ - Build Tool: Maven
+ - IDE: Intellij IDEA
+ - Server: Tomcat as embedded server
+ - Database: MySQL
+ - REST Client: Postman
+ - REST API Documentation: Swagger
+ - Production: AWS
+ - Production: AWS
   2)
 
 6. Application Architecture
@@ -38,4 +81,5 @@
   GET         /api/posts/{id}   200(OK)         Get post by id
   POST        /api/posts        201(Created)    Create a new Post
   DELETE      /api/posts/{id}   200(OK)         Delete post by id
+  PUT         /api/posts/{id}   200(OK)         Update existing post with id
   PUT         /api/posts/{id}   200(OK)         Update existing post with id
