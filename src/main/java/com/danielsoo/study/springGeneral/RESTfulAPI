@@ -75,11 +75,20 @@
   4) DAO(Repository) - Persistence Logic
   5) DB
 
-8. Design Examples for POST resources
-  <HTTP Method> <URL Path>    <StatusCode>    <Description>
-  GET         /api/posts        200(OK)         Get all posts
-  GET         /api/posts/{id}   200(OK)         Get post by id
-  POST        /api/posts        201(Created)    Create a new Post
-  DELETE      /api/posts/{id}   200(OK)         Delete post by id
-  PUT         /api/posts/{id}   200(OK)         Update existing post with id
-  PUT         /api/posts/{id}   200(OK)         Update existing post with id
+8. Design Examples for
+  - POST resources
+    <HTTP Method>   <URL Path>       <StatusCode>    <Description>
+    GET             /api/posts        200(OK)         Get all posts
+    GET             /api/posts/{id}   200(OK)         Get post by id
+    POST            /api/posts        201(Created)    Create a new Post
+    DELETE          /api/posts/{id}   200(OK)         Delete post by id
+    PUT             /api/posts/{id}   200(OK)         Update existing post with id
+
+  - COMMENT resources
+    <HTTP Method>   <URL Path>                         <StatusCode>    <Description>
+    GET             /api/posts/{postId}/comments        200(OK)         Get all comments belongs to post with id = postId
+    GET             /api/posts/{postId}/comments/{id}   200(OK)         Get a comment by id which belongs to post with id = postId
+    POST            /api/posts/{postId}/comments        201(Created)    Create a new comment for post with id = postId
+    PUT             /api/posts/{postId}/comments/{id}   200(OK)         Update existing comment by id which belongs to post with id = postId
+    DELETE          /api/posts/{postId}/comments/{id}   200(OK)         Delete a comment by id which belongs to post with id = postId
+

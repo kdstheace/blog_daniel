@@ -65,4 +65,19 @@
         public PasswordEncoder getPasswordEncoder(){
             return NoOpPasswordEncoder.getInstance();
         }
+  4. logout: localhost:8080/logout
+
+@How to configure <Authorization>
+  1. override method "configure(HttpSecurity http)" from "WebSecurityConfigurerAdapter"
+  2. authorize request begins with ".authorizeRequest()"
+  3. define role according to the path with the form of : <path> ~ <allowedRoles>
+  4. example:
+        @Override
+        protected void configure(HttpSecurity http) throws Exception {
+            http.authorizeRequests()
+                .antMatchers("/admin").hasRole("ADMIN")
+                .antMatchers("/user").hasAnyRole("ADMIN", "USER")
+                .antMatchers("/").permitAll()
+                .and().formLogin();
+        }
 
