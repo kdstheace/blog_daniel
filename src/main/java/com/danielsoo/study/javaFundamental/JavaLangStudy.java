@@ -13,7 +13,7 @@ public class JavaLangStudy {
  1.4 Math Class
  1) private 생성자로 다른 클래스에서 인스턴스를 생성할 수 없다.
  2) 모든 메서드는 static으로 인스턴스변수가 하나도 없다.
- 3) 2개의 상수만 정희해놨다.
+ 3) 2개의 상수만 정의해놨다.
  - public static final double E = 2.718....; - 자연로그의 밑
  - public static final double PI = 3.141592...;  - 원주율
  */
