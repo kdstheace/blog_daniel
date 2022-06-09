@@ -27,14 +27,14 @@
     1. As one of 'filters' for every request, it intercepts every requests.
     2. SS's default behavior
       1) Adds mandatory authentication for all URLs (skip some of urls eg.error page)
-      2) Adds login form
+      2) Adds login form, logout
       3) Handles login error
       4) Creates a user and sets a default password
         *You can override the default user at <application.properties> with setting as below.
         spring.security.user.name=customizedName
         spring.security.user.password=hello
 
-@HowToConfigureAuthenticationInSS
+@How to configure <Authentication>
   1. AuthenticationManager : doing authenticate()
   2. AuthenticationManagerBuilder : build up AM
         AMB: What type of Auth?
@@ -45,5 +45,24 @@
       - SpringSecurityApp has a Class 'WebSecurityConfigurerAdapter', which has a configure(AuthenticationManagerBuilder auth)
       - You have to extend that class and override configure(AuthMgrBldr),
         without it, SSApp will call the default configure.
+      - put annotation @EnableWebSecurity on the extended class
     2) Set the configuration on it
+    4) add passwordEncoder
+    3) example:
+        @Override
+        protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+            auth.inMemoryAuthentication()
+                .withUser("sexysoo")
+                .password("sexy")
+                .roles("USER")
+                .and()
+                .withUser("admin")
+                .password("admin")
+                .roles("ADMIN");
+        }
+
+        @Bean
+        public PasswordEncoder getPasswordEncoder(){
+            return NoOpPasswordEncoder.getInstance();
+        }
 

@@ -67,7 +67,7 @@
  - Production: AWS
   2)
 
-6. Application Architecture
+7. Application Architecture
   1) Postman Client
     DTO, JSON
   2) Controller - API Layer
@@ -75,7 +75,7 @@
   4) DAO(Repository) - Persistence Logic
   5) DB
 
-7. Design Examples for POST resources
+8. Design Examples for POST resources
   <HTTP Method> <URL Path>    <StatusCode>    <Description>
   GET         /api/posts        200(OK)         Get all posts
   GET         /api/posts/{id}   200(OK)         Get post by id
