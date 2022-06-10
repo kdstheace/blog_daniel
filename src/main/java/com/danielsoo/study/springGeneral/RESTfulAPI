@@ -92,3 +92,8 @@
     PUT             /api/posts/{postId}/comments/{id}   200(OK)         Update existing comment by id which belongs to post with id = postId
     DELETE          /api/posts/{postId}/comments/{id}   200(OK)         Delete a comment by id which belongs to post with id = postId
 
+  - COMMENT resources
+    <HTTP Method>   <URL Path>              <StatusCode>    <Description>
+    POST             /api/auth/signup        200(OK)         signup
+    POST             /api/auth/signin        200(OK)         signin
+
