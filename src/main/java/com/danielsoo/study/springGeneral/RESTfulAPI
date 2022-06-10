@@ -9,7 +9,7 @@
 
 3. REST Architectural Constraints (REST Guidlines for RESTful API)
   1) Client-Server Architecture: The client & Server are independent to each other
-  2) Stateless: The server does not store any data during the processing of the request server
+  2) Stateless: The server does not store any data during the processing of the request to server
                 (only client-side will save the state of the session)
   3) Cacheable: The client should have ability to store responses in a cache
   4) Uniform Interface: a generic interface manages all the interactions btw the client & server in a unified way.
