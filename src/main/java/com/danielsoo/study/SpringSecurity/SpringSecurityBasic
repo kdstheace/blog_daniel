@@ -81,3 +81,8 @@
                 .and().formLogin();
         }
 
+@How does SpringSecurity work behind
+  1. filter > (Authentication~credentials) >  AuthenticationManager.authenticate()
+  2. > AuthenticationProvider.authenticate()
+     > AuthenticationProvider.supports()     > UserDetailsService.loadUserByUserName()
+  3. > AuthenticationManager.authenticate() > (Authentication ~ principal) > filter
