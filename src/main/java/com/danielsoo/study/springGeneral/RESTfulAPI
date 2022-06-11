@@ -9,7 +9,7 @@
 
 3. REST Architectural Constraints (REST Guidlines for RESTful API)
   1) Client-Server Architecture: The client & Server are independent to each other
-  2) Stateless: The server does not store any data during the processing of the request server
+  2) Stateless: The server does not store any data during the processing of the request to server
                 (only client-side will save the state of the session)
   3) Cacheable: The client should have ability to store responses in a cache
   4) Uniform Interface: a generic interface manages all the interactions btw the client & server in a unified way.
@@ -91,4 +91,9 @@
     POST            /api/posts/{postId}/comments        201(Created)    Create a new comment for post with id = postId
     PUT             /api/posts/{postId}/comments/{id}   200(OK)         Update existing comment by id which belongs to post with id = postId
     DELETE          /api/posts/{postId}/comments/{id}   200(OK)         Delete a comment by id which belongs to post with id = postId
+
+  - COMMENT resources
+    <HTTP Method>   <URL Path>              <StatusCode>    <Description>
+    POST             /api/auth/signup        200(OK)         signup
+    POST             /api/auth/signin        200(OK)         signin
 
