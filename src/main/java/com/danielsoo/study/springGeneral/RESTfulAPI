@@ -159,3 +159,14 @@
           @Repository,
           @Transactional(readOnly=true) implements "JpaRepositoryImplementation"
          so that it internally implements all *Repository interfaces
+
+12. Pagination & Sorting
+  1) Pagination consists of 2 fields : pageSize, pageNumber
+  2) parameters are generally optional, it is transferred as query parameters
+    http://localhost:8080/api/posts?pageSize=5
+    http://localhost:8080/api/posts?pageSize=5&pageNo=1
+    http://localhost:8080/api/posts?pageSize=5&pageNo=1&sortBy=title
+  3) JpaRepository<T, ID> -> PagingAndSortingRepository<T, ID>
+  4) PagingAndSortingRepository<T, ID>
+    - findAll(Sort) iterable<T>
+    - findAll(Pageable) Page<T>
