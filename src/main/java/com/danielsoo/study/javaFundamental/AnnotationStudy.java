@@ -6,22 +6,42 @@ import java.util.List;
 public class AnnotationStudy {
     /**
     @Spring boot
-    1. Start
+     1. Start
         1) @SpringBootApplication: 항상 최상단에서 사용, 여기서부터 읽기 시작함
         2)
-    2. Controller
+     2. Controller
         1) 상단
             - @RestController: 컨트롤러를 JSON으로 반환하는 컨트롤러로 만들어 준다. @ResponseBody를 각 메소드마다 선언했던 것을 한번에 사용할 수 있게 함.
         2) 메소드별
+            - @ResponseBody: convert Java Object(DTO) into JSON as return(response)
             - @RequestMapping: (method=RequestMethod.GET) 등을 붙여서 HTTP METHOD를 받게한 옛날 방식
-            - @GetMapping: HTTP Method의 Get 요청을 받을 수 있는 API를 만듦,
-    3. Test
+            - @GetMapping: HTTP Method의 Get 요청을 받을 수 있는 API를 만듦
+     3. Test
         1) Class상단
             - @RunWith(SpringRunner.class) : 테스트 진행할 때 SpringRunner라는 스프링 실행자를 사용하여, 스프링부트테스트와 JUnit사이의 연결자 역할을 한다.
             - @WebMvcTest(Controllers = Ctrler.class)
                     : 여러 테스트어노테이션 중, Web에 집중할 수 있는 어노테이션, 선언할 경우 , @Controller, @ControllerAdvice 등 사용 가능
                       단, @Service, @Component, @Repository는 사용 불가
+     4. Exception
+        1) @ResponseStatus: causes SpringBoot to respond with the specified HTTP status code whenever this exception is thrown from a Controller
     */
+
+    /**
+     @Lombok
+     1. @Data
+     2. @AllArgsConstructor: generates an all-args constructor.
+     3. @NoArgsConstructor: because Hibernate internally uses proxies to create objects
+     */
+
+    /**
+     @JPA
+     1. @Entity
+     2. @Table(
+            name="tbName", uniqueConstraints={@UniqueConstraint(columnNames={"title"})}
+        ) : name지정안해주면 자동으로 class이름이 됨.
+     2. @AllArgsConstructor: generates an all-args constructor.
+     3. @NoArgsConstructor: because Hibernate internally uses proxies to create objects
+     */
 
     /**
     @Java in General

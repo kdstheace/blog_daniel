@@ -123,3 +123,30 @@
       - create-drop
       - validate
       - update: create table if table does not exist and if it exist, update it.
+11. Creating ~
+  1) Entity
+  2) Repository
+
+  3) CustomizedException
+    - Requirements
+      1) throw a ResourceNotFoundException whenever a Post with a given id is not found
+      2) customize msg such as "Post not found with id : 1"
+        customize response with 404 : NOT_FOUND
+    - @ResponseStatus: causes SpringBoot to respond with the specified HTTP status code whenever this exception is thrown from a Controller
+    - Constructor
+          public ResourceNotFoundException(String resourceName, String fieldName, String fieldValue){
+              super(String.format("%s not found with %s : '%s'", resourceName, fieldName, fieldValue));
+              this.fieldName = fieldName;
+              this.fieldValue = fieldValue;
+              this.resourceName = resourceName;
+          }
+  4) DTO
+    - why? The advantage of using DTO on RESTful API is that it can hide implementation details of JPA entities.
+      For security issue, instead of exposing JPA Entity directly to the controller, we can use DTO for the client.
+  5) Controller
+    - @RestController(for RestApi)
+    -
+  6) Service
+    1. Constructor based dependency Injection
+      - whenever we configure a class as a spring bean and the class only has one constructor,
+        then we can omit the @Autowired
