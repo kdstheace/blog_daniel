@@ -159,6 +159,7 @@
           @Repository,
           @Transactional(readOnly=true) implements "JpaRepositoryImplementation"
          so that it internally implements all *Repository interfaces
+     5. !! Please Don't put @Repository on *Repository interfaces
 
 12. Pagination & Sorting
   1) Pagination consists of 2 fields : pageSize, pageNumber
@@ -171,4 +172,8 @@
     - findAll(Sort) iterable<T>
     - findAll(Pageable) Page<T>
 
-*
+13. JPA
+  1) FetchType.LAZY: tells hibernate to only fetch the related entities from the database when it uses the relationship.
+  2) @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+  3) @JoinColumn(name="post_id", nullable = false)
+
