@@ -1,0 +1,17 @@
+<h1>1. Dependency Injection</h1>
+<h3>1) Constructor-based Dependency Injection</h3>
+Constructor-based DI is accomplished when the container invokes a class constructor with a number of arguments, each representing a dependency on the other class.
+
+```java
+public class TextEditor {
+   private SpellChecker spellChecker;
+
+   public TextEditor(SpellChecker spellChecker) {
+      System.out.println("Inside TextEditor constructor." );
+      this.spellChecker = spellChecker;
+   }
+   public void spellCheck() {
+      spellChecker.checkSpelling();
+   }
+}
+```

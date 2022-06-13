@@ -170,3 +170,5 @@
   4) PagingAndSortingRepository<T, ID>
     - findAll(Sort) iterable<T>
     - findAll(Pageable) Page<T>
+
+*
