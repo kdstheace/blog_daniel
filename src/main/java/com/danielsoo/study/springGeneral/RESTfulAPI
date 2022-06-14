@@ -162,6 +162,7 @@
 
 12. Pagination & Sorting
   1) Pagination consists of 2 fields : pageSize, pageNumber
+     optional value so default value is needed
   2) parameters are generally optional, it is transferred as query parameters
     http://localhost:8080/api/posts?pageSize=5
     http://localhost:8080/api/posts?pageSize=5&pageNo=1
@@ -170,3 +171,9 @@
   4) PagingAndSortingRepository<T, ID>
     - findAll(Sort) iterable<T>
     - findAll(Pageable) Page<T>
+  5) Pagination Support for Get all posts RESTAPI
+    - private List<Post> content;
+    - private int pageNo, pageSize;
+    - private long totalElements;
+    - private int totalPages;
+    - private boolean last;
