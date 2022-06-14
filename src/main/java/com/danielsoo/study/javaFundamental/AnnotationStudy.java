@@ -16,6 +16,9 @@ public class AnnotationStudy {
             - @ResponseBody: convert Java Object(DTO) into JSON as return(response)
             - @RequestMapping: (method=RequestMethod.GET) 등을 붙여서 HTTP METHOD를 받게한 옛날 방식
             - @GetMapping: HTTP Method의 Get 요청을 받을 수 있는 API를 만듦
+            - 파라미터
+                - @RequestBody : 요청 body의 데이터를 객체의 setter로 세팅해줌.
+                - @PathVariable: 매핑 경로에 있는 다이나믹 변수 값 지정
      3. Test
         1) Class상단
             - @RunWith(SpringRunner.class) : 테스트 진행할 때 SpringRunner라는 스프링 실행자를 사용하여, 스프링부트테스트와 JUnit사이의 연결자 역할을 한다.
