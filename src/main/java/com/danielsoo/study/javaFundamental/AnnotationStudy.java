@@ -39,8 +39,11 @@ public class AnnotationStudy {
      2. @Table(
             name="tbName", uniqueConstraints={@UniqueConstraint(columnNames={"title"})}
         ) : name지정안해주면 자동으로 class이름이 됨.
-     2. @AllArgsConstructor: generates an all-args constructor.
-     3. @NoArgsConstructor: because Hibernate internally uses proxies to create objects
+     2. @AllArgsConstructor: (from lombok)generates an all-args constructor.
+     3. @NoArgsConstructor: (from lombok)because Hibernate internally uses proxies to create objects
+     4. @JoinColumn(name="post_id"), nullable = false)
+     5. @ManyToOne(fetch=FetchType.LAZY)
+     6. @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
      */
 
     /**
