@@ -1,0 +1,220 @@
+1. What is RESTAPI?
+   REpresentational: formats (xml, JSON, yaml, html)
+   State: data
+   Transfer: transferring data btw client-server using HTTP protocol
+
+
+2. Why?
+   Increases in using various devices such as mobile, REST API lets the web&mobile clients consume the API
+   without developing separate applications
+
+
+3. REST Architectural Constraints (REST Guidlines for RESTful API)
+   1) Client-Server Architecture: The client & Server are independent to each other
+   2) Stateless: The server does not store any data during the processing of the request to server
+      (only client-side will save the state of the session)
+   3) Cacheable: The client should have ability to store responses in a cache
+   4) Uniform Interface: a generic interface manages all the interactions btw the client & server in a unified way.
+      , which simplifies and decouples the architecture
+   5) Layered System: The server can have multiple layers for implementation.
+      It helps to improve scalability by enabling a load balancing
+   6) Code on Demand: (Optional) the functionality of the client application can be extended at runtime
+      by allowing a code download from the server, executing the code.
+
+
+4. Key Concepts
+   1) Resource
+      : anything you want to show to the world thru your application.
+       * blog application's rsc - Post, Comment, User, Tags
+   2) URI(Uniform Resource Identifier)
+      : identify resources by using HTTP protocols
+       * eg. PUT-http://localhost:8080/api/posts/2 : Updates a POST rsc whose ID is 2
+   3) Sub-resource
+      : the relationships are often modelled by a sub-resource
+       * Syntax: GET /resources/{resource-id}/sub-resource/{sub-resource-id}
+   4) HTTP Methods
+      - GET: to get a collection or a single rsc
+      - POST: to create a new rsc
+      - PUT: to update an existing rsc
+      - DELETE: to delete a collection or a single rsc
+      - PATCH: to update rsc partially
+
+
+5. HTTP Status Codes
+   1) 200 OK: indicates the request is successful, and the response content is returned to the client as appropriate
+   2) 201 Created: indicates that the request is successful and a new resource is created
+   3) 400 BadRequest: indicates that the server failed to process the request because of the syntax error. The client needs to correct request.
+   4) 401 Unauthorized: indicates that authentication is required for the rsc. try again with a proper authentication.
+   5) 403 Forbidden: indicates that the server is refusing to respond to the request even if the request is valid.
+      eg. protected contents for unauthorized request
+      the reason will be listed in the body as long as the request is not a HEAD method
+   6) 404 NotFound: indicates that the requested rsc is not found at the location specified in the request
+   7) 500 InternalServerError: indicates a generic error message. Unexpected error occurred in a server side
+
+
+6. Best Practices for Designing REST API
+   1) use noun for rsc identification
+   2) use plural nouns to name a rsc
+   3) use sub-rsc for relations
+
+
+** Mock blog Technology stack
+- Java Platform: Java 8+
+- Frameworks: Spring Boot, Spring Security(JWT), Spring Data JPA(Hibernate)
+- Build Tool: Maven
+- IDE: Intellij IDEA
+- Server: Tomcat as embedded server
+- Database: MySQL
+- REST Client: Postman
+- REST API Documentation: Swagger
+- Production: AWS
+- Production: AWS
+2)
+
+
+7. Application Architecture
+   1) Postman Client
+      DTO, JSON
+   2) Controller - API Layer
+   3) Service - Business Logic
+   4) DAO(Repository) - Persistence Logic
+   5) DB
+
+8. Design Examples for
+- POST resources
+<table>
+    <thead>
+        <tr>
+            <th>HTTP Method</th><th>URL Path</th><th>StatusCode</th><th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>GET</td><td>/api/posts/{id}</td><td>200(OK)</td><td>Get all posts</td>
+        </tr>
+        <tr>
+            <td>GET</td><td>/api/posts</td><td>200(OK)</td><td>Get post by id</td>
+        </tr>
+        <tr>
+            <td>POST</td><td>/api/posts</td><td>201(Created)</td><td>Create a new Post</td>
+        </tr>
+        <tr>
+            <td>DELETE</td><td>/api/posts/{id}</td><td>200(OK)</td><td>Delete post by id</td>
+        </tr>
+        <tr>
+            <td>PUT</td><td>/api/posts/{id}</td><td>200(OK)</td><td>Update existing post with id</td>
+        </tr>
+    </tbody>
+</table>
+
+
+- COMMENT resources
+  <HTTP Method>   <URL Path>                         <StatusCode>    <Description>
+  GET             /api/posts/{postId}/comments        200(OK)         Get all comments belongs to post with id = postId
+  GET             /api/posts/{postId}/comments/{id}   200(OK)         Get a comment by id which belongs to post with id = postId
+  POST            /api/posts/{postId}/comments        201(Created)    Create a new comment for post with id = postId
+  PUT             /api/posts/{postId}/comments/{id}   200(OK)         Update existing comment by id which belongs to post with id = postId
+  DELETE          /api/posts/{postId}/comments/{id}   200(OK)         Delete a comment by id which belongs to post with id = postId
+
+- Signup resources
+  <HTTP Method>   <URL Path>              <StatusCode>    <Description>
+  POST             /api/auth/signup        200(OK)         signup
+  POST             /api/auth/signin        200(OK)         signin
+
+9. Spring Initializer for test api
+- Spring Web
+- Spring Data JPA
+- MySQL Driver
+- Lombok
+- Spring Boot DevTools : no need to explicitly restart application whenever there is changes
+
+10. Configure MySql in SpringProject
+- pom.xml
+- DAO ~ (JDBC Driver, JDBC URL, Username, Password) ~ DB
+- set application.properties file as below
+  spring.datasource.url = jdbc:mysql://localhost:3306/myblog?useSSL=false&serverTimezone=UTC
+  spring.datasource.username=root
+  spring.datasource.password=root
+
+  #hibernate properties
+  spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
+  spring.jpa.hibernate.ddl-auto=update
+
+* the SQL dialect makes hibernate generate better SQL for the chosen database
+- hibernate settings
+    1) ddl-auto
+    - create
+    - create-drop
+    - validate
+    - update: create table if table does not exist and if it exist, update it.
+11. Creating ~
+1) Entity
+2) Repository
+
+3) CustomizedException
+   - Requirements
+    1) throw a ResourceNotFoundException whenever a Post with a given id is not found
+    2) customize msg such as "Post not found with id : 1"
+       customize response with 404 : NOT_FOUND
+       - @ResponseStatus: causes SpringBoot to respond with the specified HTTP status code whenever this exception is thrown from a Controller
+       - Constructor
+       public ResourceNotFoundException(String resourceName, String fieldName, String fieldValue){
+       super(String.format("%s not found with %s : '%s'", resourceName, fieldName, fieldValue));
+       this.fieldName = fieldName;
+       this.fieldValue = fieldValue;
+       this.resourceName = resourceName;
+       }
+4) DTO
+   - why? The advantage of using DTO on RESTful API is that it can hide implementation details of JPA entities.
+   For security issue, instead of exposing JPA Entity directly to the controller, we can use DTO for the client.
+5) Controller
+   - @RestController(for RestApi)
+   -
+6) Service
+   1. Constructor based dependency Injection
+    - whenever we configure a class as a spring bean and the class only has one constructor,
+      then we can omit the @Autowired
+7) Repository
+    1. typeVariable: entity type, primary key type
+    2. no need to explicitly write a code, cuz "JPARespository" already provides primary CRUD functions.
+    3. JPARepository even extends "PagingAndSortingRepository"
+    4. no need to add @Repository because of "SimpleJpaRepository"
+       "SimpleJpaRepository", default implementation class of the JpaRepository interface,  which has
+       @Repository,
+       @Transactional(readOnly=true) implements "JpaRepositoryImplementation"
+       so that it internally implements all *Repository interfaces
+    5. !! Please Don't put @Repository on *Repository interfaces
+
+12. Pagination & Sorting
+1) Pagination consists of 2 fields : pageSize, pageNumber
+   optional value so default value is needed
+2) parameters are generally optional, it is transferred as query parameters
+   http://localhost:8080/api/posts?pageSize=5
+   http://localhost:8080/api/posts?pageSize=5&pageNo=1
+   http://localhost:8080/api/posts?pageSize=5&pageNo=1&sortBy=title
+3) JpaRepository<T, ID> -> PagingAndSortingRepository<T, ID>
+4) PagingAndSortingRepository<T, ID>
+   - findAll(Sort) iterable<T>
+   - findAll(Pageable) Page<T>
+5) Pagination Support for Get all posts RESTAPI
+   - private List<Post> content;
+   - private int pageNo, pageSize;
+   - private long totalElements;
+   - private int totalPages;
+   - private boolean last;
+   - private boolean last;
+
+13. JPA
+1) FetchType.LAZY: tells hibernate to only fetch the related entities from the database when it uses the relationship.
+2) @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+3) @JoinColumn(name="post_id", nullable = false)
+
+14. ModelMapper Library in SpringBootApp
+    Make Object Mapping easy
+1) Step 1. Add ModelMapper Library dependency
+2) Step 2. Define the ModelMapper bean in our Spring configuration
+   @Bean
+   public ModelMapper modelMapper(){
+   return new ModelMapper();
+   }
+3) Step 3. Inject and use ModelMapper

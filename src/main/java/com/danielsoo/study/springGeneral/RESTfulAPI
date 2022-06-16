@@ -185,3 +185,46 @@
   2) @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
   3) @JoinColumn(name="post_id", nullable = false)
 
+14. ModelMapper Library in SpringBootApp
+  Make Object Mapping easy
+  1) Step 1. Add ModelMapper Library dependency
+  2) Step 2. Define the ModelMapper bean in our Spring configuration
+    @Bean
+    public ModelMapper modelMapper(){
+      return new ModelMapper();
+    }
+  3) Step 3. Inject and use ModelMapper
+
+
+15. How to customize Exception on Restful Api
+  - GlobalExceptionHandler : handles specific and global exceptions in a single place (내가 만들 것)
+  - (스프링부트 기본제공 Exception Handling)
+    {
+      "timestamp" : "2021-02-28T14:15:18.250+00:00",
+      "status" : 404,
+      "error" : "Not Found",
+      "trace" : "com.springboot.blog.exception.ResourceNotFoundException: Post not found with id asdfdsa...",
+      "message" : "Post not found with id asdfdsa...",
+      "path" : "/api/posts/6"
+     }
+  - Annotations for Exception Handling
+    @ExceptionHandler : used to handle the specific exceptions and sending the custom responses to the client
+    @ControllerAdvice : used to handle the exceptions globally (GlobalExceptionHandler에 붙임)
+
+16. Java Bean Validation Framework
+  - validate java bean with JSR380(AKA Bean Validation 2.0.)
+  - de facto standard
+  - Ensures that the properties of a bean meet specific criteria, using annotations such as @NotNull, @Min, @Max..
+  - "Hibernate Validator" is the reference implementation of the validation API
+  - Important Bean Validation Annotations
+    1) @NotNull - validates that the annotated property value is not null.
+    2) @Size - validates that the annotated property value has a size between the attributes min and max
+               (applied to String, Collection, Map, and array)
+    3) @Min - validates that the annotated property has a value no smaller than the value attribute
+    4) @Max - validates that the annotated property has a value no larger than the value attribute
+    5) @Email - validates that the annotated property is a valid email address
+    6) @NotEmpty - validates that the property is not null or empty
+               (applied to String, Collection, Map or Array)
+    7) @NotBlank - validates the property is not null or whitespace
+               (applied only to text values)
+  - Add dependency (spring-boot-starter-validation)
