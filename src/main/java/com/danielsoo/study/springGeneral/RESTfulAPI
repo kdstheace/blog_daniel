@@ -240,3 +240,9 @@
     3) Add @Valid to enable hibernate validator in target Controller methods' parameter
     4) GlobalExceptionHandler extends ResponseEntityExceptionHandler
         and override handleMethodArgumentNotValid()
+
+17. Spring Security
+  1) Intro
+    - Default userId = user, default pw is printed on console in the server start up log
+    - By default, SS turn on for all the URLs in the application
+    - csrf token?
