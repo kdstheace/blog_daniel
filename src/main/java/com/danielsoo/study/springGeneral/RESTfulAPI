@@ -197,6 +197,7 @@
 
 
 15. How to customize Exception on Restful Api
+  - Why? 스프링부트에서 기본제공하는 에러응답이 아니라, 내가 정의내린 객체로 원하는 포맷과 형식을 지정해 에러응답을 보내기 위함.
   - GlobalExceptionHandler : handles specific and global exceptions in a single place (내가 만들 것)
   - (스프링부트 기본제공 Exception Handling)
     {
@@ -217,6 +218,7 @@
   - Ensures that the properties of a bean meet specific criteria, using annotations such as @NotNull, @Min, @Max..
   - "Hibernate Validator" is the reference implementation of the validation API
   - Important Bean Validation Annotations
+    0) @Valid - enable validation upon Controller by adding this in addition to @RequestBody
     1) @NotNull - validates that the annotated property value is not null.
     2) @Size - validates that the annotated property value has a size between the attributes min and max
                (applied to String, Collection, Map, and array)
@@ -228,3 +230,13 @@
     7) @NotBlank - validates the property is not null or whitespace
                (applied only to text values)
   - Add dependency (spring-boot-starter-validation)
+  - To customize response validation, we need to extend
+    <ResponseEntityExceptionHandler> class
+    and override
+    <handleMethodArgumentNoValid(MethodArgumentNotValidException ex, HttpHeader headers, HttpStatus status, WebRequest request) method.
+  - Steps
+    1) Add dependency (spring-boot-starter-validation)
+    2) Add valid annotations in DTO
+    3) Add @Valid to enable hibernate validator in target Controller methods' parameter
+    4) GlobalExceptionHandler extends ResponseEntityExceptionHandler
+        and override handleMethodArgumentNotValid()
