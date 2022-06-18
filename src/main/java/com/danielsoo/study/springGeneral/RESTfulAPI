@@ -246,3 +246,4 @@
     - Default userId = user, default pw is printed on console in the server start up log
     - By default, SS turn on for all the URLs in the application
     - csrf token?
+
