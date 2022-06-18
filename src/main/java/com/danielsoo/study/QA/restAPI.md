@@ -130,7 +130,16 @@ super()안에 메시지를 정의해주기 보단, 직접 message를 인스턴�
    2. JWT를 쓰면 로그인하면 계속 JWT를 주니까, 다른 요청에는 헤더에 토큰만 넣어주면됨.
 ###6. Implementing JWT to SpringBoot Project
    1. Adding JWT Dependency
-   2. 
+   2. Create JwtAuthenticationEntryPoint (implements AuthenticationEntryPoint)
+      1. to handle Exception due to unauthorized client
+      2. override commence(): for whenever exception is thrown due to unauthorized user trying to access rsc that requires authentication
+      3. add errmsg on response Object
+   3. Add JWT properties in application.properties file
+   4. Create JwtTokenProvider
+   5. JwtAuthenticationFilter
+   6. Create JWTAuthResponseDTO
+   7. Configure JWT in SpringSecurityConfiguration
+   8. Change login/signin API to return token to client
 
 
 
