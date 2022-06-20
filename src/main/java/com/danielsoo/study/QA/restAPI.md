@@ -141,6 +141,24 @@ super()안에 메시지를 정의해주기 보단, 직접 message를 인스턴�
    7. Configure JWT in SpringSecurityConfiguration
    8. Change login/signin API to return token to client
 
+#Versioning REST APIs
+API versioning is the practice of transparently managing changes to your API
+versioning strategy allows clients to continue using the existing API and migrate their application to the new API when they are ready
+
+
+###1. When to version?
+    1. Changing the request/response format(e.g. from XML to JSON)
+    2. Changing a property name(e.g. from name to productName) or data type on a property
+    3. Adding a required field on the request(e.g. a new required header or property in a request body))
+    4. Removing a property on the response(e.g. removing description from a product)
+
+###2. 4Ways of versioning a REST API
+####by URI Path
+####by query parameters
+####by custom header
+####by content negotiation
+
+
 
 
 
