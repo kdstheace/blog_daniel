@@ -137,6 +137,7 @@ super()안에 메시지를 정의해주기 보단, 직접 message를 인스턴�
    3. Add JWT properties in application.properties file
    4. Create JwtTokenProvider
    5. JwtAuthenticationFilter
+      1. guarantees single execution per request dispatch, or any servlet container
    6. Create JWTAuthResponseDTO
    7. Configure JWT in SpringSecurityConfiguration
    8. Change login/signin API to return token to client
