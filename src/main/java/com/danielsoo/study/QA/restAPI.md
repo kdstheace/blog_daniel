@@ -154,6 +154,7 @@ versioning strategy allows clients to continue using the existing API and migrat
 
 ###2. 4Ways of versioning a REST API
 ####by URI Path
+    - http://www.example.com/api/v1/products
 ####by query parameters
 ####by custom header
 ####by content negotiation
