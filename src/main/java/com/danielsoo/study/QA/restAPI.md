@@ -156,6 +156,8 @@ versioning strategy allows clients to continue using the existing API and migrat
 ###2. 4Ways of versioning a REST API
 ####by URI Path
     - http://www.example.com/api/v1/products
+    - @RequestMapping("/api/v1/posts")에서 메소드 별로 버전이 달라질 경우, 
+    - @GetMapping("/api/v1/posts/{id}"), @GetMapping("/api/v2/posts/{id}"), 
 ####by query parameters
 ####by custom header
 ####by content negotiation
