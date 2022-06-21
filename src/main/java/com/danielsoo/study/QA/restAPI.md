@@ -146,7 +146,6 @@ super()안에 메시지를 정의해주기 보단, 직접 message를 인스턴�
 API versioning is the practice of transparently managing changes to your API
 versioning strategy allows clients to continue using the existing API and migrate their application to the new API when they are ready
 
-
 ###1. When to version?
     1. Changing the request/response format(e.g. from XML to JSON)
     2. Changing a property name(e.g. from name to productName) or data type on a property
@@ -155,12 +154,46 @@ versioning strategy allows clients to continue using the existing API and migrat
 
 ###2. 4Ways of versioning a REST API
 ####by URI Path
+    * most commonly used one.
     - http://www.example.com/api/v1/products
     - @RequestMapping("/api/v1/posts")에서 메소드 별로 버전이 달라질 경우, 
     - @GetMapping("/api/v1/posts/{id}"), @GetMapping("/api/v2/posts/{id}"), 
 ####by query parameters
+    - http://www.example.com/api/products?version=1
+    - @GetMapping(value = "/api/posts/{id}", params = "version=2")
 ####by custom header
+    - headers=[X-API-VERSION=1]
+    - it does not clutter the URI with versioning info
+      but, it requires custom headers
+    - @GetMapping(value = "/api/posts/{id}", headers = "X-API-VERSION=1")
 ####by content negotiation
+    - use Accept Header in the request.
+    - http://localhost:8080/api/products
+      headers[Accept = application/vnd.daniel-v2+json]
+      @GetMapping(value = "/api/posts/{id}", produces = "application/vnd.daniel-v2+json")
+
+#SWAGGER
+1. Swagger provides user interface for RESTful API and documentation.
+###2. Why Documentation Matters?
+    1. different application consumes restAPI, and wonder what does the endpoints , payload structure, response, errorcode, messages look like?
+    
+###3. Integrate Swagger3 to SpringBootProject
+1. Swagger3 springfox-boot-starter
+``
+    <!-- https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter -->
+    <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-boot-starter</artifactId>
+        <version>3.0.0</version>
+    </dependency>
+   ``
+2. http://localhost:8080/swagger-ui/#/
+
+###4. Customize Swagger Document
+1. 
+
+
+
 
 
 
