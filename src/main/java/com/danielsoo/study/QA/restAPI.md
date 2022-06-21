@@ -190,7 +190,8 @@ versioning strategy allows clients to continue using the existing API and migrat
 2. http://localhost:8080/swagger-ui/#/
 
 ###4. Customize Swagger Document
-1. 
+1. Swagger Config
+2. 
 
 
 
