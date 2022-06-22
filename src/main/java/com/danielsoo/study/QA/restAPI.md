@@ -44,6 +44,8 @@ super()안에 메시지를 정의해주기 보단, 직접 message를 인스턴�
       2) @EnableWebSecurity
       3) WebSecurityConfigurerAdapter클래스 상속받는다.
       4) configure()을 오버라이딩한다.
+      5) hasRole("ADMIN") 과 hasAuthority("ADMIN")의 차이
+         1) 전자는 앞에 자동으로 "ROLE_"이라는 prefix가 붙지만 후자는 그대로 DB에서 가져온다.
 
       여기서 사용되는 체인 메소드로
       1) http.authorizeRequests(): 메소드로 특정 경로에 특정 권한을 가진 사용자만 접근할 수 잇도록 함
@@ -191,7 +193,53 @@ versioning strategy allows clients to continue using the existing API and migrat
 
 ###4. Customize Swagger Document
 1. Swagger Config
-2. 
+2. Swagger CoreAnnotations
+   1. @Api : Marks a class as a Swagger resource
+   2. @ApiOperation : Describes an operation or typically an HTTP method against a specific path
+   3. @ApiModel : Provides additional information about Swagger models.
+   4. @ApiModelProperty : Adds and manipulates data of a model property.
+   5. @ApiParam : Adds additional meta-data for operation parameters
+   6. @ApiResponse : Describes a possible response of an operation
+   7. @ApiResponses : A wrapper to allow a list of multiple ApiResponse objects
+
+#5. AWS service
+###1. 5 Main Services
+   1. EC2
+      1. Elastic Compute Cloud, secure, resizable compute capacity in the cloud.
+      2. create instance as a server, install Java, Tomcat ...
+   2. Elastic Beanstalk
+      1. easy-to-use service for deploying and scaling web application.
+      2. simply upload code, it automatically handles the deployment.
+      3. how it works?
+         1. without it, create ec2 instance and put java, tomcat, application  in it.
+         2. set up S3, RDS as well
+         3. Beanstalk provides the service of all 1, 2 "automatically".
+   3. RDS
+      1. for relational DB
+      2. makes it easy to set up, operate, scale a relational DB in the cloud.
+   4. S3
+      1. Simple Storage Service
+      2. object storage service that offers scalability, data availability
+      3. for large amount of data
+   5. Route53
+      1. Domain Name System.
+      2. configure domain.
+###2. Steps
+   1. Setting application.properties
+      1. distinct .properties file as dev, prd, qa etc
+      2. make spring application read certain .properties(profile)file
+         - by default, SpringBootApplication automatically read "application.properties"
+         - by putting <spring.profiles.active=prod>, it directs SpringBott to certain profile.
+         - common configuration is in "application.properties" and put 
+            "spring.profiles.active=dev" for target profile
+   2. prepare for DB data migration
+      1. schema.sql for DDL, data.sql for others
+      2. Make springBoot internally query them.
+      3. Or manually, Main implements CommandLineRunner and override run(), put block of codes
+   3. Create RDS and connect it to local workbench, and applicaton
+   4. Deploy Jar to deploy
+      1. Maven clean > install
+
 
 
 
