@@ -237,8 +237,12 @@ versioning strategy allows clients to continue using the existing API and migrat
       2. Make springBoot internally query them.
       3. Or manually, Main implements CommandLineRunner and override run(), put block of codes
    3. Create RDS and connect it to local workbench, and applicaton
-   4. Deploy Jar to deploy
-      1. Maven clean > install
+   4. Deploy Jar to deploy through BeanStalk
+      1. set target as prd in application.properties> Maven clean > install
+      2. .jar is created in a target folder
+      3. AWS BeanStalk > create application > upload .jar file > more configuration > setting DB account, password > Create button
+      * it internally make S3 storage as well
+      5. 
 
 
 
