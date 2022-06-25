@@ -1,4 +1,4 @@
-#1.Account
+1.Account
 ###1. Root User
 1. email access
 ###2. IAM User
