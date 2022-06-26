@@ -45,3 +45,9 @@
    2. 2Types
       1. org.springframework.beans.factory.BeanFactory(I/F) - basic(creating, autowire, configure beans)
       2. org.springframework.beans.ApplicationContext(I/F)
+
+#Maven
+1. helps projects to build, download dependencies
+2. Maven Repository
+3. .m2 : created by Maven, try to maintain all the libraries in here. 
+4. defines dependencies on pom.xml
