@@ -218,3 +218,17 @@
    return new ModelMapper();
    }
 3) Step 3. Inject and use ModelMapper
+
+14. Transactional Management with SpringBoot & SpringDataJPA
+    1. <SimpleJpaRepository> is used as the default implementation of JpaRepository.
+    2. ~Repository that we usually use is a extension of JpaRepository. which will call its implementation, <SimpleJpaRepository>
+    3. Spring Data JPA, by default, provides transaction management for it's CRUD methods. By which, we don't have to manually manage the transactions for those methods.
+    4. <SimpleJpaRepository> has @Transactional(readonly = true), which means it has transaction management with readonly attribution.
+        for save or update, it has @Transactional on each method to override without any attribution.
+    5. We can override default transactional methods in ~Repository.
+    6. @Transactional : combine several transactions to one.
+       1. readOnly = true
+       2. timeout = 10 > 10 milliseconds
+       3. propagation = 
+          1. propagation.NEVER
+    
