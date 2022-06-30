@@ -232,7 +232,7 @@
     7) @NotBlank - validates the property is not null or whitespace
                (applied only to text values)
   - Add dependency (spring-boot-starter-validation)
-  - To customize response validation, we need to extend
+  - To customize response validation, GlobalExceptionHandler need to extend
     <ResponseEntityExceptionHandler> class
     and override
     <handleMethodArgumentNoValid(MethodArgumentNotValidException ex, HttpHeader headers, HttpStatus status, WebRequest request) method.

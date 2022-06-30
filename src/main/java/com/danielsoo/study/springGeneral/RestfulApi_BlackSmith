@@ -9,7 +9,7 @@
    without developing separate applications
 
 
-3. REST Architectural Constraints (REST Guidlines for RESTful API)
+3. REST Architectural Constraints (REST Guidelines for RESTful API)
    1) Client-Server Architecture: The client & Server are independent to each other
    2) Stateless: The server does not store any data during the processing of the request to server
       (only client-side will save the state of the session)
@@ -229,6 +229,13 @@
     6. @Transactional : combine several transactions to one.
        1. readOnly = true
        2. timeout = 10 > 10 milliseconds
-       3. propagation = 
+       3. propagation =
           1. propagation.NEVER
+          2. propagation.
+          전파옵션이란, 트랜잭션을 시작하거나 기존 트랜잭션에 참여하는 방법에 대해 결정하는 속성값,  트랜잭션 흐름 컨트롤
+       5. rollbackFor = PaymentException.class
+          : rollback for particular Exception
+    7. @EnableTransactionManagement (SpringBoot by default has it. so not necessary)
+       : put on the top of main class.
+    8. 
     
